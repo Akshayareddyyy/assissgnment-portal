@@ -5,27 +5,169 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dashboard</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #e0eafc, #cfdef3);
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      background-color: #1e2a38;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .nav-left a {
+      color: white;
+      margin-right: 1.5rem;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .nav-left a:hover {
+      text-decoration: underline;
+    }
+
+    .nav-right button {
+      background-color: #ff5e5e;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .nav-right button:hover {
+      background-color: #e04e4e;
+    }
+
+    .container {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card h1 {
+      margin-bottom: 0.5rem;
+    }
+
+    .card h2 {
+      margin-top: 2rem;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+    }
+
+    .stats {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .stat-card {
+      background-color: #f4f6fc;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+    footer {
+  text-align: center;
+  padding: 1rem;
+  margin-top: 40px;
+  background: #e5e7eb;
+  color: #1f2937;
+}
+
+.dark footer {
+  background: #111827;
+  color: #f3f4f6;
+}
+
+  </style>
 </head>
 <body>
-  <nav>
-    <a href="dashboard.html">Dashboard</a>
-    <a href="leaderboard.html">Leaderboard</a>
-    <a href="index.html">Logout</a>
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="home.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="leaderboard.html">Leaderboard</a>
+    </div>
+    <div class="nav-right">
+      <button id="logoutBtn">Logout</button>
+    </div>
   </nav>
 
-  <div class="container">
-    <h1>Welcome, <span id="name">Loading...</span> 👋</h1>
-    <p><strong>Referral Code:</strong> <span id="code">...</span></p>
-    <p><strong>Total Donations Raised:</strong> ₹<span id="donations">0</span></p>
+  <main class="container">
+    <div class="card">
+      <h1>Welcome, <span id="username">Akshaya</span> 👋</h1>
+      <p><strong>Referral Code:</strong> <span id="referralCode">ABC123</span></p>
+      <p><strong>Total Donations Raised:</strong> ₹<span id="donation">0</span></p>
 
-    <h2>🎁 Rewards</h2>
-    <ul>
-      <li>🎉 ₹500 – Custom T-Shirt</li>
-      <li>🏅 ₹1000 – Digital Certificate</li>
-      <li>🏆 ₹2000 – Internship Offer</li>
-    </ul>
-  </div>
+      <h2>🎁 Rewards</h2>
+      <ul>
+        <li>🎉 ₹500 – Custom T-Shirt</li>
+        <li>🏅 ₹1000 – Digital Certificate</li>
+        <li>🏆 ₹2000 – Internship Offer</li>
+      </ul>
 
-  <script src="script.js"></script>
+      <div class="stats">
+        <div class="stat-card">
+          <h3>Tasks Completed</h3>
+          <p>8</p>
+        </div>
+        <div class="stat-card">
+          <h3>Leaderboard Rank</h3>
+          <p>#12</p>
+        </div>
+        <div class="stat-card">
+          <h3>Attendance</h3>
+          <p>96%</p>
+        </div>
+        <div class="stat-card">
+          <h3>Submissions</h3>
+          <p>4</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+ <script>
+  AOS.init();
+
+  function logout() {
+    const confirmLogout = confirm("Are you sure you want to logout?");
+    if (confirmLogout) {
+      alert("You have been logged out.");
+      window.location.href = "index.html";
+    }
+  }
+</script>
+   <footer style="text-align: center; padding: 1rem; margin-top: 40px; background: #e5e7eb; color: #1f2937;">
+    © 2025 Intern Portal 
+  </footer>
 </body>
 </html>

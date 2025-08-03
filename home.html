@@ -1,0 +1,225 @@
+<!-- home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Intern Portal Home</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+  <style>
+    /* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #fdfbfb, #ebedee);
+  color: #333;
+  min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #222;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin-right: 1.5rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #ffcc00;
+}
+
+.logout-btn {
+  background-color: #ff4d4d;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #cc0000;
+}
+
+/* Main Container */
+.container {
+  padding: 2rem;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* Welcome Section */
+.welcome {
+  background: #ffffffcc;
+  padding: 3rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.welcome h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.welcome p {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #388e3c;
+}
+
+/* Features Section */
+.features {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.card {
+  background-color: #fff;
+  flex: 1;
+  padding: 1.8rem;
+  min-width: 250px;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card h2 {
+  font-size: 1.4rem;
+  margin: 1rem 0 0.5rem;
+  color: #222;
+}
+
+.card p {
+  color: #555;
+}
+
+/* Quote Section */
+.quote {
+  background: linear-gradient(to right, #f9f9f9, #e0e0e0);
+  padding: 2rem;
+  border-left: 5px solid #4CAF50;
+  margin-bottom: 3rem;
+  border-radius: 10px;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #f1f1f1;
+  color: #777;
+  font-size: 0.9rem;
+  border-top: 1px solid #ddd;
+}
+
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="home.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="leaderboard.html">Leaderboard</a>
+    </div>
+    <div class="nav-right">
+      <button onclick="logout()" class="logout-btn">Logout</button>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="welcome" data-aos="fade-right">
+      <h1>👋 Welcome to the Intern Portal</h1>
+      <p>Track your impact, earn rewards, and rise through the ranks.</p>
+      <a href="dashboard.html" class="cta-button">Go to Dashboard</a>
+    </section>
+
+    <section class="features">
+      <div class="card" data-aos="zoom-in-up">
+        📈 <h2>Performance Tracking</h2>
+        <p>Monitor your stats, earnings, and growth.</p>
+      </div>
+      <div class="card" data-aos="zoom-in-up" data-aos-delay="100">
+        🏆 <h2>Leaderboard</h2>
+        <p>See your rank and push to the top.</p>
+      </div>
+      <div class="card" data-aos="zoom-in-up" data-aos-delay="200">
+        🎁 <h2>Amazing Rewards</h2>
+        <p>Earn T-shirts, certificates, and internships.</p>
+      </div>
+    </section>
+
+    <section class="quote" data-aos="fade-up">
+      <blockquote>
+        “Success isn’t about how much money you make. It’s about the difference you make in people’s lives.”<br>
+        — <i>Michelle Obama</i>
+      </blockquote>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Intern Portal </p>
+  </footer>
+
+ <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+
+  function logout() {
+    const confirmLogout = confirm("Are you sure you want to logout?");
+    if (confirmLogout) {
+      alert("You have been logged out.");
+      window.location.href = "index.html";
+    }
+  }
+</script>
+
+</body>
+</html>

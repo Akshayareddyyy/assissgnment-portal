@@ -5,22 +5,206 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Leaderboard</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #f9fafb;
+      color: #1f2937;
+      transition: background 0.3s, color 0.3s;
+    }
+
+   
+    .navbar {
+      background-color: #1e2a38;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .nav-left a {
+      color: white;
+      margin-right: 1.5rem;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .nav-left a:hover {
+      text-decoration: underline;
+    }
+
+    .nav-right button {
+      background-color: #ff5e5e;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .nav-right button:hover {
+      background-color: #e04e4e;
+    }
+
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2.2rem;
+    }
+
+    .trophy {
+      text-align: center;
+      font-size: 3rem;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .search-bar {
+      text-align: right;
+      margin-bottom: 10px;
+    }
+
+    .search-bar input {
+      padding: 8px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      width: 200px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      padding: 16px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f3f4f6;
+    }
+
+    tr:hover {
+      background-color: #f0f9ff;
+      transition: 0.3s;
+    }
+
+    .rank {
+      font-weight: bold;
+      color: black;
+    }
+
+    .profile-img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .dark table {
+      background: #374151;
+      color: #f3f4f6;
+    }
+
+    .dark th {
+      background: #4b5563;
+    }
+
+    .dark tr:hover {
+      background-color: #1e293b;
+    }
+footer {
+  text-align: center;
+  padding: 1rem;
+  margin-top: 40px;
+  background: #e5e7eb;
+  color: #1f2937;
+}
+
+.dark footer {
+  background: #111827;
+  color: #f3f4f6;
+}
+
+  </style>
 </head>
 <body>
-  <nav>
-    <a href="dashboard.html">Dashboard</a>
-    <a href="leaderboard.html">Leaderboard</a>
-    <a href="index.html">Logout</a>
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="home.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="leaderboard.html">Leaderboard</a>
+    </div>
+    <div class="nav-right">
+      <button id="logoutBtn" >Logout</button>
+     
+    </div>
   </nav>
 
   <div class="container">
-    <h1>🏆 Leaderboard</h1>
-    <table>
-      <tr><th>Name</th><th>Donations</th></tr>
-      <tr><td>Akshaya</td><td>₹1500</td></tr>
-      <tr><td>Rohit</td><td>₹1200</td></tr>
-      <tr><td>Sneha</td><td>₹950</td></tr>
+    <div class="trophy">🏆</div>
+    <h1>Leaderboard</h1>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search name...">
+    </div>
+
+    <table id="leaderboardTable">
+      <tr><th>Rank</th><th>Name</th><th>Donations</th></tr>
+      <tr><td class="rank">1</td><td><img src="https://i.pravatar.cc/32?img=1" class="profile-img" />Akshaya</td><td>₹1500</td></tr>
+      <tr><td class="rank">2</td><td><img src="https://i.pravatar.cc/32?img=2" class="profile-img" />Rohit</td><td>₹1200</td></tr>
+      <tr><td class="rank">3</td><td><img src="https://i.pravatar.cc/32?img=3" class="profile-img" />Sneha</td><td>₹950</td></tr>
+      <tr><td class="rank">4</td><td><img src="https://i.pravatar.cc/32?img=4" class="profile-img" />Meena</td><td>₹700</td></tr>
     </table>
   </div>
+
+  <script>
+    
+
+    // Search filter
+    const searchInput = document.getElementById("searchInput");
+    searchInput.addEventListener("input", function () {
+      const filter = searchInput.value.toLowerCase();
+      const rows = document.querySelectorAll("#leaderboardTable tr:not(:first-child)");
+      rows.forEach(row => {
+        const name = row.cells[1].innerText.toLowerCase();
+        row.style.display = name.includes(filter) ? "" : "none";
+      });
+    });
+  </script>
+    <footer style="text-align: center; padding: 1rem; margin-top: 40px; background: #e5e7eb; color: #1f2937;">
+    © 2025 Intern Portal 
+  </footer>
+<script>
+  AOS.init();
+
+  function logout() {
+    const confirmLogout = confirm("Are you sure you want to logout?");
+    if (confirmLogout) {
+      alert("You have been logged out.");
+      window.location.href = "index.html";
+    }
+  }
+</script>
 </body>
 </html>

@@ -3,17 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Intern Portal - Login</title>
+  <title>Intern Portal - Home</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-image: url('https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?cs=srgb&dl=pexels-pixabay-531880.jpg&fm=jpg');
+      margin-top: 30px;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <h1>Intern Portal</h1>
-    <form onsubmit="event.preventDefault(); window.location.href='dashboard.html';">
-      <input type="text" placeholder="Enter your name" required />
-      <input type="email" placeholder="Enter your email" required />
-      <button type="submit">Login</button>
-    </form>
+    <h1>Welcome to the Intern Portal 🎓</h1>
+    <p>This is the official portal for interns to track their progress, access resources, and more.</p>
+    <button onclick="window.location.href='login.html'">Login</button>
+    <button onclick="window.location.href='signup.html'">Sign Up</button>
   </div>
 </body>
 </html>
